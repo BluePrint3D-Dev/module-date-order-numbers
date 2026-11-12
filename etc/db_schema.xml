@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2026 BluePrint3D Ltd. All rights reserved.
+ *
+ * This software is provided free of charge for personal or commercial use.
+ * Resale, redistribution, or sublicensing of this source code, modified or
+ * unmodified, for direct financial gain is strictly prohibited.
+ *
+ * @author    BluePrint3D Ltd <support@blueprint3d.dev>
+ * @copyright 2026 BluePrint3D Ltd (Company No. 13473806)
+ * @license   Custom Proprietary EULA (See LICENSE.txt)
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="blueprint3d_order_number_counter" resource="sales" engine="innodb"
+           comment="BluePrint3D Date Order Numbers: daily counters">
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false" identity="false" comment="Store ID"/>
+        <column xsi:type="varchar" name="entity_type" nullable="false" length="32" comment="order, invoice, shipment or creditmemo"/>
+        <column xsi:type="varchar" name="number_date" nullable="false" length="8" comment="Store-local date, Ymd"/>
+        <column xsi:type="int" name="counter" unsigned="true" nullable="false" identity="false" default="0" comment="Last number issued"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="store_id"/>
+            <column name="entity_type"/>
+            <column name="number_date"/>
+        </constraint>
+    </table>
+    <table name="blueprint3d_order_number_used" resource="sales" engine="innodb"
+           comment="BluePrint3D Date Order Numbers: random numbers already issued">
+        <column xsi:type="smallint" name="store_id" unsigned="true" nullable="false" identity="false" comment="Store ID"/>
+        <column xsi:type="varchar" name="entity_type" nullable="false" length="32" comment="order, invoice, shipment or creditmemo"/>
+        <column xsi:type="varchar" name="number_date" nullable="false" length="8" comment="Store-local date, Ymd"/>
+        <column xsi:type="varchar" name="value" nullable="false" length="16" comment="Random part issued"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="store_id"/>
+            <column name="entity_type"/>
+            <column name="number_date"/>
+            <column name="value"/>
+        </constraint>
+    </table>
+</schema>

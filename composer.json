@@ -1,0 +1,38 @@
+{
+  "type": "magento2-module",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "BluePrint3D Ltd",
+      "email": "support@blueprint3d.dev",
+      "homepage": "https://blueprint3d.dev"
+    }
+  ],
+  "support": {
+    "email": "support@blueprint3d.dev",
+    "docs": "https://blueprint3d.dev"
+  },
+
+  "--- MODULE SPECIFIC BELOW ---": "-------------------------",
+
+  "name": "blueprint3d/module-date-order-numbers",
+  "description": "Date-based order, invoice, shipment and credit memo numbers for Magento 2 (e.g. 20261112-001) that restart every day, with optional random suffixes and shared document numbers.",
+
+  "require": {
+    "php": ">=8.1.0 <8.6.0",
+    "magento/framework": "*",
+    "magento/module-sales": "*",
+    "magento/module-sales-sequence": "*",
+    "magento/module-quote": "*",
+    "magento/module-store": "*",
+    "magento/module-config": "*"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "BluePrint3D\\DateOrderNumbers\\": ""
+    }
+  }
+}

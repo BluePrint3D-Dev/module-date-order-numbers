@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2026 BluePrint3D Ltd. All rights reserved.
+ *
+ * This software is provided free of charge for personal or commercial use.
+ * Resale, redistribution, or sublicensing of this source code, modified or
+ * unmodified, for direct financial gain is strictly prohibited.
+ *
+ * @author    BluePrint3D Ltd <support@blueprint3d.dev>
+ * @copyright 2026 BluePrint3D Ltd (Company No. 13473806)
+ * @license   Custom Proprietary EULA (See LICENSE.txt)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <blueprint3d_order_numbers>
+            <general>
+                <enabled>0</enabled>
+                <mode>sequential</mode>
+                <date_format>Ymd</date_format>
+                <separator>-</separator>
+                <counter_padding>3</counter_padding>
+                <random_length>4</random_length>
+                <share_numbers>1</share_numbers>
+            </general>
+            <prefixes>
+                <order></order>
+                <invoice></invoice>
+                <shipment></shipment>
+                <creditmemo></creditmemo>
+            </prefixes>
+        </blueprint3d_order_numbers>
+    </default>
+</config>

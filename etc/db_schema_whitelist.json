@@ -1,0 +1,24 @@
+{
+    "blueprint3d_order_number_counter": {
+        "column": {
+            "store_id": true,
+            "entity_type": true,
+            "number_date": true,
+            "counter": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "blueprint3d_order_number_used": {
+        "column": {
+            "store_id": true,
+            "entity_type": true,
+            "number_date": true,
+            "value": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

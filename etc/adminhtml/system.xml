@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2026 BluePrint3D Ltd. All rights reserved.
+ *
+ * This software is provided free of charge for personal or commercial use.
+ * Resale, redistribution, or sublicensing of this source code, modified or
+ * unmodified, for direct financial gain is strictly prohibited.
+ *
+ * @author    BluePrint3D Ltd <support@blueprint3d.dev>
+ * @copyright 2026 BluePrint3D Ltd (Company No. 13473806)
+ * @license   Custom Proprietary EULA (See LICENSE.txt)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="blueprint3d_order_numbers" translate="label" type="text" sortOrder="915"
+                 showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Date Order Numbers</label>
+            <tab>sales</tab>
+            <resource>Magento_Sales::config_sales</resource>
+            <group id="general" translate="label" type="text" sortOrder="10"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Numbering</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Date-Based Numbers</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>New orders (and documents) only. Existing numbers are never changed. Set this per store view.</comment>
+                </field>
+                <field id="mode" translate="label comment" type="select" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Number Style</label>
+                    <source_model>BluePrint3D\DateOrderNumbers\Model\Config\Source\Mode</source_model>
+                    <comment>Sequential restarts at 1 every day. Random hides how many orders you take each day.</comment>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+                <field id="date_format" translate="label comment" type="text" sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Date Format</label>
+                    <validate>validate-length maximum-length-12</validate>
+                    <comment>PHP date format in the store's timezone. Default Ymd gives 20261112. Use only date letters (Y, y, m, d, n, j).</comment>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+                <field id="separator" translate="label comment" type="text" sortOrder="40"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Separator</label>
+                    <validate>validate-length maximum-length-2</validate>
+                    <comment>Placed between the date and the number. Default "-". Must not be empty.</comment>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+                <field id="counter_padding" translate="label comment" type="text" sortOrder="50"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sequential Number Length</label>
+                    <validate>validate-digits validate-digits-range digits-range-1-8</validate>
+                    <comment>Zero-padded. 3 gives 001. Counts past the limit simply get longer (1000).</comment>
+                    <depends><field id="enabled">1</field><field id="mode">sequential</field></depends>
+                </field>
+                <field id="random_length" translate="label comment" type="text" sortOrder="60"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Random Number Length</label>
+                    <validate>validate-digits validate-digits-range digits-range-3-8</validate>
+                    <comment>Digits in the random part. Never repeats within a day; grows automatically if a day fills up.</comment>
+                    <depends><field id="enabled">1</field><field id="mode">random</field></depends>
+                </field>
+                <field id="share_numbers" translate="label comment" type="select" sortOrder="70"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Invoices, Shipments and Credit Memos Share the Order Number</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Yes: order 20261112-003 gets invoice 20261112-003 (a second partial invoice gets 20261112-003-2). No: each document type has its own daily counter.</comment>
+                    <depends><field id="enabled">1</field></depends>
+                </field>
+            </group>
+            <group id="prefixes" translate="label comment" type="text" sortOrder="20"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Prefixes (optional)</label>
+                <comment>For example FW- for Five Wishes, or INV- for invoices.</comment>
+                <field id="order" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Prefix</label>
+                    <validate>validate-length maximum-length-8</validate>
+                </field>
+                <field id="invoice" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Invoice Prefix</label>
+                    <validate>validate-length maximum-length-8</validate>
+                </field>
+                <field id="shipment" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Shipment Prefix</label>
+                    <validate>validate-length maximum-length-8</validate>
+                </field>
+                <field id="creditmemo" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Credit Memo Prefix</label>
+                    <validate>validate-length maximum-length-8</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

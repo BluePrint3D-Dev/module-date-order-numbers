@@ -17,7 +17,7 @@ composer require blueprint3d/module-date-order-numbers
 bin/magento module:enable BluePrint3D_DateOrderNumbers
 bin/magento setup:upgrade
 ```
-Then enable it under **Stores > Configuration > Sales > Date Order Numbers** (it ships switched off).
+Then enable it under **Stores > Configuration > BluePrint3D > Date Order Numbers** (it ships switched off).
 
 ## Good to know
 - Only new orders and documents are affected. Existing numbers never change.

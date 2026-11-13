@@ -15,10 +15,15 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <section id="blueprint3d_order_numbers" translate="label" type="text" sortOrder="915"
+        <tab id="blueprint3d" translate="label" sortOrder="100">
+            <label>BluePrint3D</label>
+        </tab>
+
+        <section id="blueprint3d_order_numbers" translate="label" type="text" sortOrder="50"
                  showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
             <label>Date Order Numbers</label>
-            <tab>sales</tab>
+            <tab>blueprint3d</tab>
             <resource>Magento_Sales::config_sales</resource>
             <group id="general" translate="label" type="text" sortOrder="10"
                    showInDefault="1" showInWebsite="1" showInStore="1">
